@@ -1,23 +1,38 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.*;
+import java.time.Duration;
 
 public class LoginPage {
 
     WebDriver driver;
-
-    By username = By.id("uid");
-    By password = By.id("passw");
-    By loginBtn = By.name("btnSubmit");
+    WebDriverWait wait;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
     public void login(String user, String pass) {
-        driver.findElement(username).sendKeys(user);
-        driver.findElement(password).sendKeys(pass);
-        driver.findElement(loginBtn).click();
+
+        // Click Sign In
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.linkText("Sign In")
+        )).click();
+
+        // Wait for login page
+        wait.until(ExpectedConditions.urlContains("login.jsp"));
+
+        // Username
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.name("uid")
+        )).sendKeys(user);
+
+        // Password
+        driver.findElement(By.name("passw")).sendKeys(pass);
+
+        // Login button
+        driver.findElement(By.name("btnSubmit")).click();
     }
 }
