@@ -20,6 +20,13 @@ Automation framework for an online banking web application using Selenium WebDri
 1. Clone the repository
 2. Import as Maven project
 3. Run test cases using TestNG
+## 📁 Banking QA Sample Documents
+
+Manual test cases and sample bug reports for a demo banking web application are available here:
+
+🔗 Google Drive Link: https://drive.google.com/drive/folders/1nbPRN3i6CFTJrNF8jPRx0EP1FDL1QkbE?usp=drive_link
+
+
 
 ## Author
 Karishma
